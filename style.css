@@ -1,0 +1,356 @@
+body {
+    padding-top: 140px; /* Adjust for fixed navbar */
+}
+/* Add to your CSS */
+.d-none {
+    display: none !important;
+  }
+  /* Style for search results container */
+#result {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+  }
+
+
+/* Navbar styling */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.c-img{
+    height: 100%;
+    object-fit: cover;
+  }
+a img{
+    width: 210px;
+    height: 100px;
+    object-fit: cover;
+    justify-content: center;
+ }
+.glassmorphism{
+    background: rgba(255, 255, 255, 0.2);    
+    backdrop-filter: blur(11px);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+#links li {
+    list-style: none;
+    font-size: 20px;
+}
+#btn-1 {
+    margin-right: 10px;
+    font-size: 20px;
+}
+#img-1{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border-radius: 50%;
+}
+.card-title{
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+#contacts{
+    row-gap: 50px;
+} 
+
+.services{
+    display: flex;
+    justify-content: space-around;
+    row-gap: 50px;
+    column-gap: 20px;
+}
+
+ #img-2{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border-radius: 50%;
+}
+#ser{
+    padding-top: 70px;
+}
+#cont-list{
+    font-weight: lighter;
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+/* Container Styling */
+.d-department {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    width: 250px;
+}
+
+.cats-menu-title {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.cats-menu-title i {
+    margin-right: 8px;
+}
+
+/* Menu Styling */
+.toggle-product-cats {
+    margin-top: 10px;
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-item {
+    position: relative;
+}
+
+.menu-item a {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    font-size: 16px;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.menu-item a:hover {
+    background-color: #f8f8f8;
+}
+
+/* Icons */
+.menu-item i {
+    margin-right: 10px;
+    color: #28a745;
+}
+
+/* Dropdown Menu */
+.dropdown-submenu {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    width: 530px;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-position: left bottom;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+}
+
+.menu-item:hover > .dropdown-sub{
+    display: block;
+}
+
+/* modal */
+#image{
+    width: 210px;
+    height: auto;
+    object-fit: cover;
+    justify-content: center;
+}
+#checkout-btn{
+    background-color: rgb(11, 50, 11);
+}
+
+@media (max-width: 768px) {
+    .services{
+        flex-direction: column;
+        align-items: center;
+    }
+}
+/* Responsive Design for Navbar */
+@media (max-width: 768px) {
+    .navbar-brand img {
+        width: 150px; /* Adjust logo size for smaller screens */
+    }
+    .navbar-nav {
+        flex-direction: column; /* Stack nav items vertically */
+        align-items: center; /* Center align nav items */
+        padding-top: 2px; /* Add some padding */
+        padding-bottom: 2px; /* Add some padding */
+        margin: 0; /* Remove margin */
+        
+    }
+    .nav-link {
+        margin: 5px 0; /* Add some spacing between nav items */
+    }
+}
+/* Responsive Design for Footer */
+@media (max-width: 768px) {
+    .footer {
+        text-align: center; /* Center align footer text */
+        padding: 20px; /* Add some padding */
+    }
+    .footer a {
+        display: block; /* Stack footer links vertically */
+        margin: 5px 0; /* Add some spacing between links */
+    }
+    #social {
+        display: flex; /* Use flexbox for social icons */
+        justify-content: center; /* Center align social icons */
+        gap: 10px; /* Add some spacing between icons */
+    }
+    #social a i{
+        font-size: 24px; /* Adjust icon size for smaller screens */
+    }
+}
+/* Responsive Design for Contact List */
+@media (max-width: 768px) {
+    #cont-list {
+        padding: 10px; /* Add some padding */
+        font-size: 14px; /* Adjust font size for smaller screens */
+    }
+    #contacts {
+        flex-direction: column; /* Stack contact items vertically */
+        align-items: center; /* Center align contact items */
+    }
+    #contacts ul li {
+        margin: 5px 0; /* Add some spacing between contact items */
+    }
+    #contacts ul li a {
+        font-size: 14px; /* Adjust font size for smaller screens */
+    }
+    #contacts ul li i {
+        margin-right: 5px; /* Adjust icon spacing for smaller screens */
+        font-size: smaller; /* Adjust icon size for smaller screens */
+    }
+    #contacts ul li span {
+        font-size: 12px; /* Adjust text size for smaller screens */
+        display: flex; /* Use flexbox for better alignment */
+        text-wrap: nowrap; /* Prevent text wrapping */
+        justify-content: center; /* Center align text and icon */
+        align-items: center; /* Center align text and icon */
+    }
+    #contacts ul li span i {
+        margin-right: 5px; /* Adjust icon spacing for smaller screens */
+    }
+    #contacts ul li span a {
+        font-size: 12px; /* Adjust link size for smaller screens */
+    }
+    #contacts ul li span a i {
+        margin-right: 5px; /* Adjust icon spacing for smaller screens */
+    }
+    #contacts ul li span a:hover {
+        text-decoration: underline; /* Add underline on hover for links */
+    }
+    #contacts ul li span a:visited {
+        color: #007bff; /* Change color for visited links */
+    }
+
+}
+/* Responsive Design for Services Section */
+@media (max-width: 768px) {
+    .services {
+        flex-direction: column; /* Stack service items vertically */
+        align-items: center; /* Center align service items */
+    }
+    .services img {
+        width: 100%; /* Make images responsive */
+        height: auto; /* Maintain aspect ratio */
+    }
+}
+/* Responsive Design for Department Section */
+@media (max-width: 768px) {
+    .d-department {
+        width: 100%; /* Make department container responsive */
+        padding: 10px; /* Add some padding */
+    }
+    .cats-menu-title {
+        font-size: 16px; /* Adjust font size for smaller screens */
+    }
+    .menu-item a {
+        font-size: 14px; /* Adjust font size for smaller screens */
+    }
+    .dropdown-submenu {
+        width: 100%; /* Make dropdown menu responsive */
+    }
+}
+/* Responsive Design for Modal */
+@media (max-width: 768px) {
+    .modal-dialog {
+        max-width: 90%; /* Make modal responsive */
+        margin: 30px auto; /* Center align modal */
+    }
+    .modal-content {
+        padding: 20px; /* Add some padding */
+    }
+    #image {
+        width: 100%; /* Make image responsive */
+        height: auto; /* Maintain aspect ratio */
+    }
+}
+/* Responsive Design for Checkout Button */
+@media (max-width: 768px) {
+    #checkout-btn {
+        width: 100%; /* Make button responsive */
+        padding: 10px; /* Add some padding */
+        font-size: 16px; /* Adjust font size for smaller screens */
+    }
+}
+/* Responsive Design for Search Bar */
+@media (max-width: 768px) {
+    .search-bar {
+        width: 100%; /* Make search bar responsive */
+        padding: 10px; /* Add some padding */
+        font-size: 16px; /* Adjust font size for smaller screens */
+    }
+}
+/* Responsive Design for Search Button */
+@media (max-width: 768px) {
+    .search-button {
+        width: 100%; /* Make button responsive */
+        padding: 10px; /* Add some padding */
+        font-size: 16px; /* Adjust font size for smaller screens */
+    }
+}
+/* Responsive Design for Search Results List */
+@media (max-width: 768px) {
+    #result {
+        width: 100%; /* Make list responsive */
+        padding: 10px; /* Add some padding */
+        font-size: 16px; /* Adjust font size for smaller screens */
+    }
+}
+/* Responsive Design for Search Results Item */
+@media (max-width: 768px) {
+    #result {
+        width: 100%; /* Make item responsive */
+        padding: 10px; /* Add some padding */
+        font-size: 16px; /* Adjust font size for smaller screens */
+    }
+}
+/* Responsive Design for Search Results Item Image */
+@media (max-width: 768px) {
+    #result img {
+        width: 100%; /* Make image responsive */
+        height: auto; /* Maintain aspect ratio */
+    }
+}
+
+
+ 
+
+   
