@@ -36,13 +36,13 @@
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="navbar-brand"><a href="index.html"><img src="img/logo-removebg-preview.png" alt=""></a></div>
+      <div class="navbar-brand"><a href="index.html" onclick="closeOffcanvas()"><img src="img/logo-removebg-preview.png" alt=""></a></div>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-          <li class="nav-item"><a href="shop.html" class="nav-link">Shop</a></li>
-          <li class="nav-item"><a href="#about" class="nav-link">Blog</a></li>
-          <li class="nav-item"><a href="#contacts" class="nav-link">Contact</a></li>
+          <li class="nav-item"><a href="index.html" class="nav-link" onclick="closeOffcanvas()">Home</a></li>
+          <li class="nav-item"><a href="shop.html" class="nav-link" onclick="closeOffcanvas()">Shop</a></li>
+          <li class="nav-item"><a href="#about" class="nav-link" onclick="closeOffcanvas()">Blog</a></li>
+          <li class="nav-item"><a href="#contacts" class="nav-link" onclick="closeOffcanvas()">Contact</a></li>
         </ul>
       </div>
       <button class="btn ms-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop">
@@ -57,17 +57,17 @@
         <h5 class="offcanvas-title" id="offcanvasTopLabel">Search</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
-<div class="offcanvas-body">
-  <form class="d-flex" onsubmit="event.preventDefault()">
-    <input class="form-control me-2" id="search-input" type="search" placeholder="Search...">
-    <button class="btn btn-dark btn-gradient" onclick="searchData()" type="button">Search</button>
-    <div id="search-results" class="mt-2 text-muted small"></div>
-  </form>
+    <div class="offcanvas-body">
+      <form class="d-flex" onsubmit="event.preventDefault()">
+        <input class="form-control me-2" id="search-input" type="search" placeholder="Search...">
+        <button class="btn btn-dark btn-gradient" onclick="searchData()" type="button">Search</button>
+        <div id="search-results" class="mt-2 text-muted small"></div>
+      </form>
+    </div>
+    <!-- for showing results -->
+   <div id="result" class="row g-4 mt-3"></div>
 </div>
-<!-- for showing results -->
-<div id="result" class="row g-4 mt-3"></div>
-
-</div>
+<script src="js/search.js"></script>
 
 <!-- carousel -->
 <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel">

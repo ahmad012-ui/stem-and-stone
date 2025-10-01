@@ -351,7 +351,21 @@ a img{
     }
 }
 
+/* for search result */
+#result .card {
+  height: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease-in-out;
+}
 
- 
+#result .card:hover {
+  transform: translateY(-5px);
+}
 
-   
+#result img {
+  max-height: 200px;
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
