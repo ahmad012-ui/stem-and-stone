@@ -9,12 +9,10 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
-  <!-- Bootstrap Bundle/Files -->
-  <link rel="stylesheet" href="bootstrap.bundle.min.js">
-  <link rel="stylesheet" href="bootstrap.min.css">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
 
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- Animation AOS -->
@@ -22,50 +20,19 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/shop.css">
 
   <!-- jquery -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-  <style>
-    body { font-family: Arial, sans-serif; }
-    .container { max-width: 1200px; margin: auto; padding: 20px; }
-    .filter-bar { display: flex; gap: 10px; margin-bottom: 20px; }
-    .product-item { display: block; }
-    .product-card { border: none; transition: transform 0.5s ease-in-out; }
-    .product-card:hover { transform: scale(1.05); }
-    .product-img { width: 100%; height: 250px; object-fit: cover; border-radius: 10px; }
-    .add-to-cart{ background-color: rgb(15, 63, 34); color: white; border: none; padding: 10px; cursor: pointer; }
-    #category{text-transform: uppercase;}
-    .shop-now { background-color: rgb(15, 63, 34); color: white; border: none; padding: 10px; cursor: pointer;}
-    .shop-now:hover{background-color: rgb(68, 103, 68); color: white;}
-    .add-to-cart:hover{background-color:rgb(68, 103, 68) ;}
-    @media (max-width: 992px) {
-     .navbar-brand { width: 100%; }
-    }
-    @media (max-width: 768px) {
-     .navbar-brand { width: 100%; }
-    }
-    @media (max-width: 576px) {
-     .navbar-brand { width: 100%; }
-    }
-    @media (max-width: 480px) {
-     .navbar-brand { width: 100%; }
-    }
-    @media (max-width: 320px) {
-     .navbar-brand { width: 100%; }
-    }
-    
-
-  </style>
 </head>
 <body>
   <nav class="navbar navbar-expand-lg fixed-top glassmorphism p-3">
     <div class="container-fluid"> 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="navbar-brand"><a href="index.html"><img src="logo-removebg-preview.png" alt=""></a></div>
+      <div class="navbar-brand"><a href="index.html"><img src="img/logo-removebg-preview.png" alt=""></a></div>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
@@ -82,19 +49,19 @@
 
   <!-- offcanvas -->
   <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
-  <div class="offcanvas-header">
+    <div class="offcanvas-header">
       <h5 class="offcanvas-title" id="offcanvasTopLabel">Search</h5>
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body">
+    </div>
+    <div class="offcanvas-body">
       <form class="d-flex">
           <input class="form-control me-2" id="search-input" type="search" placeholder="Search..." aria-label="Search">
           <button class="btn btn-dark btn-gradient" onclick="searchData()" type="button">Search</button>
       </form>
-  </div>
+    </div>
   
-  <!-- for showing results -->
-  <div id="results" class="row g-4 mt-3"></div>
+    <!-- for showing results -->
+    <div id="result" class="row g-4 mt-3"></div>
   </div>
   
   <!-- products -->
@@ -117,367 +84,482 @@
         <option value="tree">trees</option>
       </select>
     </div>
-    <div id="results" class="row g-4">
+    <div id="products" class="row g-4">
       <div class="col-lg-3 col-md-4 col-sm-6 product-item" id="indoor">
         <div class="card product-card">
-          <img src="rubber plant.jpeg" class="product-img" alt="Indoor Plant">
+          <img src="img/rubber plant.jpeg" class="product-img" alt="Indoor Plant">
           <div class="card-body text-center">
             <h5 class="card-title name" >Rubber Plant (Ficus Elastica)</h5>
             <p class="card-text">$15</p>
-            <button class="btn btn-sucess shop-now" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Shop Now</button>
-            <button class="btn btn-success add-to-cart">Add to Cart</button>
+            <div class="btn-container">
+              <button class="btn btn-success shop-now" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Shop Now</button>
+              <button class="btn btn-success add-to-cart">Add to Cart</button>            
+            </div>          
           </div>
         </div>
       </div>
       <div class="col-lg-3 col-md-4 col-sm-6 product-item" id="outdoor">
         <div class="card product-card">
-          <img src="fiddle leaf.webp" class="product-img" alt="Indoor Plant">
+          <img src="img/fiddle leaf.webp" class="product-img" alt="Indoor Plant">
           <div class="card-body text-center">
             <h5 class="card-title name" >Fiddle-leaf fig</h5>
             <p class="card-text">$20</p>
-            <button class="btn btn-sucess shop-now"  data-bs-toggle="modal" data-bs-target="#staticBackdrop2">Shop Now</button>
-            <button class="btn btn-success add-to-cart">Add to Cart</button>
+            <div class="btn-container">
+              <button class="btn btn-success shop-now"  data-bs-toggle="modal" data-bs-target="#staticBackdrop2">Shop Now</button>
+              <button class="btn btn-success add-to-cart">Add to Cart</button>           
+            </div>         
           </div>
         </div>
       </div>
       <div class="col-lg-3 col-md-4 col-sm-6 product-item" id="succulents">
         <div class="card product-card">
-          <img src="aeonium.webp" class="product-img" alt="Succulents">
+          <img src="img/aeonium.webp" class="product-img" alt="Succulents">
           <div class="card-body text-center">
             <h5 class="card-title name" >Aeonium</h5>
             <p class="card-text">$10</p>
-            <button class="btn btn-sucess shop-now"  data-bs-toggle="modal" data-bs-target="#staticBackdrop3">Shop Now</button>
-            <button class="btn btn-success add-to-cart">Add to Cart</button>
+            <div class="btn-container">
+              <button class="btn btn-success shop-now"  data-bs-toggle="modal" data-bs-target="#staticBackdrop3">Shop Now</button>
+              <button class="btn btn-success add-to-cart">Add to Cart</button>                     
+            </div>
           </div>
         </div>
       </div>
       <div class="col-lg-3 col-md-4 col-sm-6 product-item" id="succulents">
         <div class="card product-card">
-          <img src="aleo.webp" class="product-img" alt="Herbs">
+          <img src="img/aleo.webp" class="product-img" alt="Herbs">
           <div class="card-body text-center">
             <h5 class="card-title name" >Aleo Vera</h5>
             <p class="card-text">$8</p>
-            <button class="btn btn-sucess shop-now"  data-bs-toggle="modal" data-bs-target="#staticBackdrop4">Shop Now</button>
-            <button class="btn btn-success add-to-cart">Add to Cart</button>
+            <div class="btn-container">
+              <button class="btn btn-success shop-now"  data-bs-toggle="modal" data-bs-target="#staticBackdrop4">Shop Now</button>
+              <button class="btn btn-success add-to-cart">Add to Cart</button>
+            </div>
           </div>
         </div>
       </div>
       <div class="col-lg-3 col-md-4 col-sm-6 product-item" id="succulents">
         <div class="card product-card">
-          <img src="crasulla.webp" class="product-img" alt="Herbs">
+          <img src="img/crasulla.webp" class="product-img" alt="Herbs">
           <div class="card-body text-center">
             <h5 class="card-title name" >Crassula</h5>
             <p class="card-text">$25</p>
-            <button class="btn btn-sucess shop-now"  data-bs-toggle="modal" data-bs-target="#staticBackdrop5">Shop Now</button>
-            <button class="btn btn-success add-to-cart">Add to Cart</button>
+            <div class="btn-container">
+              <button class="btn btn-success shop-now"  data-bs-toggle="modal" data-bs-target="#staticBackdrop5">Shop Now</button>
+              <button class="btn btn-success add-to-cart">Add to Cart</button>
+            </div>
           </div>
         </div>
       </div>
       <div class="col-lg-3 col-md-4 col-sm-6 product-item" id="seeds">
         <div class="card product-card">
-          <img id="seed-img" src="goldenrod seeds.jpeg" class="product-img" alt="Seeds">
+          <img id="seed-img" src="img/goldenrod seeds.jpeg" class="product-img" alt="Seeds">
           <div class="card-body text-center">
             <h5 class="card-title name" >Goldenrod Seed</h5>
             <p class="card-text">$15</p>
-            <button class="btn btn-sucess shop-now" data-bs-toggle="modal" data-bs-target="#staticBackdrop6">Shop Now</button>
-            <button class="btn btn-success add-to-cart">Add to Cart</button>
+            <div class="btn-container">
+              <button class="btn btn-success shop-now" data-bs-toggle="modal" data-bs-target="#staticBackdrop6">Shop Now</button>
+              <button class="btn btn-success add-to-cart">Add to Cart</button>
+            </div>
           </div>
         </div> 
       </div>
       <div class="col-lg-3 col-md-4 col-sm-6 product-item" id="tools">
         <div class="card product-card">
-          <img src="showel.avif" class="product-img" alt="Tools">
+          <img src="img/showel.avif" class="product-img" alt="Tools">
           <div class="card-body text-center">
             <h5 class="card-title name" >Shovel</h5>
-            <p class="card-text">$10</p>
-            <button class="btn btn-sucess shop-now" data-bs-toggle="modal" data-bs-target="#staticBackdrop7">Shop Now</button>
-            <button class="btn btn-success add-to-cart">Add to Cart</button>
+            <p class="card-text">$10</p>            
+            <div class="btn-container">             
+              <button class="btn btn-success shop-now" data-bs-toggle="modal" data-bs-target="#staticBackdrop7">Shop Now</button>
+              <button class="btn btn-success add-to-cart">Add to Cart</button>
+            </div>
           </div>
         </div>
       </div>
       <div class="col-lg-3 col-md-4 col-sm-6 product-item" id="potting soil">
         <div class="card product-card">
-          <img src="potting soil.jpeg" class="product-img" alt="Potting Soil">
+          <img src="img/potting soil.jpeg" class="product-img" alt="Potting Soil">
           <div class="card-body text-center">
             <h5 class="card-title name" >Potting Soil</h5>
-            <p class="card-text">$25</p>
-            <button class="btn btn-sucess shop-now" data-bs-toggle="modal" data-bs-target="#staticBackdrop8">Shop Now</button>
-            <button class="btn btn-success add-to-cart">Add to Cart</button>
+            <p class="card-text">$25</p>           
+            <div class="btn-container">           
+              <button class="btn btn-success shop-now" data-bs-toggle="modal" data-bs-target="#staticBackdrop8">Shop Now</button>
+              <button class="btn btn-success add-to-cart">Add to Cart</button>           
+            </div>         
           </div>
         </div>
       </div>
       <div class="col-lg-3 col-md-4 col-sm-6 product-item" id="succulents">
         <div class="card product-card">
-          <img src="euphorbia.webp" class="product-img" alt="">
+          <img src="img/euphorbia.webp" class="product-img" alt="">
           <div class="card-body text-center">
             <h5 class="card-title name" >Euphorbia</h5>
-            <p class="card-text">$35</p>
-            <button class="btn btn-sucess shop-now" data-bs-toggle="modal" data-bs-target="#staticBackdrop9">Shop Now</button>
-            <button class="btn btn-success add-to-cart">Add to Cart</button>
+            <p class="card-text">$35</p>            
+            <div class="btn-container">            
+              <button class="btn btn-success shop-now" data-bs-toggle="modal" data-bs-target="#staticBackdrop9">Shop Now</button>
+              <button class="btn btn-success add-to-cart">Add to Cart</button>            
+            </div>
           </div>
         </div>
       </div>
       <div class="col-lg-3 col-md-4 col-sm-6 product-item" id="succulents">
         <div class="card product-card">
-          <img src="echevaria.webp" class="product-img" alt="">
+          <img src="img/echevaria.webp" class="product-img" alt="">
           <div class="card-body text-center">
             <h5 class="card-title name" >Echeveria</h5>
-            <p class="card-text">$40</p>
-            <button class="btn btn-sucess shop-now" data-bs-toggle="modal" data-bs-target="#staticBackdrop10">Shop Now</button>
-            <button class="btn btn-success add-to-cart">Add to Cart</button>
+            <p class="card-text">$40</p>            
+            <div class="btn-container">             
+              <button class="btn btn-success shop-now" data-bs-toggle="modal" data-bs-target="#staticBackdrop10">Shop Now</button>             
+              <button class="btn btn-success add-to-cart">Add to Cart</button>
+            </div>
           </div>
         </div>
       </div>
       <div class="col-lg-3 col-md-4 col-sm-6 product-item" id="tools">
         <div class="card product-card">
-          <img src="garden fork.jpg" class="product-img" alt="">
+          <img src="img/garden fork.jpg" class="product-img" alt="">
           <div class="card-body text-center">
             <h5 class="card-title name" >Garden Fork</h5>
-            <p class="card-text">$20</p>
-            <button class="btn btn-sucess shop-now" data-bs-toggle="modal" data-bs-target="#staticBackdrop11">Shop Now</button>
-            <button class="btn btn-success add-to-cart">Add to Cart</button>
+            <p class="card-text">$20</p>            <div class="btn-container">              
+              <button class="btn btn-success shop-now" data-bs-toggle="modal" data-bs-target="#staticBackdrop11">Shop Now</button>
+              <button class="btn btn-success add-to-cart">Add to Cart</button>            
+            </div>          
           </div>
         </div>
       </div>
       <div class="col-lg-3 col-md-4 col-sm-6 product-item" id="herbs">
         <div class="card product-card">
-          <img src="chives.jpeg" class="product-img" alt="">
+          <img src="img/chives.jpeg" class="product-img" alt="">
           <div class="card-body text-center">
             <h5 class="card-title name" >Chives</h5>
-            <p class="card-text">$50</p>
-            <button class="btn btn-sucess shop-now" data-bs-toggle="modal" data-bs-target="#staticBackdrop12">Shop Now</button>
-            <button class="btn btn-success add-to-cart">Add to Cart</button>
+            <p class="card-text">$50</p>            
+            <div class="btn-container">              
+              <button class="btn btn-success shop-now" data-bs-toggle="modal" data-bs-target="#staticBackdrop12">Shop Now</button>
+              <button class="btn btn-success add-to-cart">Add to Cart</button>            
+            </div>          
           </div>
         </div>
       </div>
       <div class="col-lg-3 col-md-4 col-sm-6 product-item" id="herbs">
         <div class="card product-card">
-          <img src="avender.jpeg" class="product-img" alt="">
+          <img src="img/avender.jpeg" class="product-img" alt="">
           <div class="card-body text-center">
             <h5 class="card-title name" >Lavender</h5>
-            <p class="card-text">$35</p>
-            <button class="btn btn-sucess shop-now" data-bs-toggle="modal" data-bs-target="#staticBackdrop13">Shop Now</button>
-            <button class="btn btn-success add-to-cart">Add to Cart</button>
+            <p class="card-text">$35</p>            
+            <div class="btn-container">              
+              <button class="btn btn-success shop-now" data-bs-toggle="modal" data-bs-target="#staticBackdrop13">Shop Now</button>
+              <button class="btn btn-success add-to-cart">Add to Cart</button>            
+            </div>          
           </div>
         </div>
       </div>
       <div class="col-lg-3 col-md-4 col-sm-6 product-item" id="herbs">
         <div class="card product-card">
-          <img src="rosemerry.jpeg" class="product-img" alt="">
+          <img src="img/rosemerry.jpeg" class="product-img" alt="">
           <div class="card-body text-center">
             <h5 class="card-title name" >Rosemerry</h5>
-            <p class="card-text">$30</p>
-            <button class="btn btn-sucess shop-now" data-bs-toggle="modal" data-bs-target="#staticBackdrop14">Shop Now</button>
-            <button class="btn btn-success add-to-cart">Add to Cart</button>
+            <p class="card-text">$30</p>            
+            <div class="btn-container">              
+              <button class="btn btn-success shop-now" data-bs-toggle="modal" data-bs-target="#staticBackdrop14">Shop Now</button>
+              <button class="btn btn-success add-to-cart">Add to Cart</button>            
+            </div>          
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6 product-item" id="herbs">
+        <div class="card product-card">
+          <img src="img/tulsi.jpeg" class="product-img" alt="">
+          <div class="card-body text-center">
+            <h5 class="card-title name" >Holy Basil</h5>
+            <p class="card-text">$50</p>            
+            <div class="btn-container">              
+              <button class="btn btn-success shop-now" data-bs-toggle="modal" data-bs-target="">Shop Now</button>
+              <button class="btn btn-success add-to-cart">Add to Cart</button>            
+            </div>          
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6 product-item" id="herbs">
+        <div class="card product-card">
+          <img src="img/basil.jpeg" class="product-img" alt="">
+          <div class="card-body text-center">
+            <h5 class="card-title name" >Basil</h5>
+            <p class="card-text">$70</p>            
+            <div class="btn-container">              
+              <button class="btn btn-success shop-now" data-bs-toggle="modal" data-bs-target="">Shop Now</button>
+              <button class="btn btn-success add-to-cart">Add to Cart</button>            
+            </div>          
           </div>
         </div>
       </div>
       <div class="col-lg-3 col-md-4 col-sm-6 product-item" id="indoor">
         <div class="card product-card">
-          <img src="Monstera_deliciosa.jpg" class="product-img" alt="">
+          <img src="img/Monstera_deliciosa.jpg" class="product-img" alt="">
           <div class="card-body text-center">
             <h5 class="card-title name" >Monstera</h5>
-            <p class="card-text">$30</p>
-            <button class="btn btn-sucess shop-now">Shop Now</button>
-            <button class="btn btn-success add-to-cart">Add to Cart</button>
+            <p class="card-text">$30</p>            
+            <div class="btn-container">              
+              <button class="btn btn-success shop-now">Shop Now</button>
+              <button class="btn btn-success add-to-cart">Add to Cart</button>            
+            </div>          
           </div>
         </div>
       </div>
       <div class="col-lg-3 col-md-4 col-sm-6 product-item" id="indoor">
         <div class="card product-card">
-          <img src="Snake_Plant.jpg" class="product-img" alt="">
+          <img src="img/Snake_Plant.jpg" class="product-img" alt="">
           <div class="card-body text-center">
             <h5 class="card-title name" >Snake Plant</h5>
-            <p class="card-text">$50</p>
-            <button class="btn btn-sucess shop-now">Shop Now</button>
-            <button class="btn btn-success add-to-cart">Add to Cart</button>
+            <p class="card-text">$50</p>            
+            <div class="btn-container">              
+              <button class="btn btn-success shop-now">Shop Now</button>
+              <button class="btn btn-success add-to-cart">Add to Cart</button>            
+            </div>          
           </div>
         </div>
       </div>
       <div class="col-lg-3 col-md-4 col-sm-6 product-item" id="indoor">
         <div class="card product-card">
-          <img src="parlour-palm-plant.jpg" class="product-img" alt="">
+          <img src="img/parlour-palm-plant.jpg" class="product-img" alt="">
           <div class="card-body text-center">
             <h5 class="card-title name" >Parlor Palm</h5>
-            <p class="card-text">$70</p>
-            <button class="btn btn-sucess shop-now">Shop Now</button>
-            <button class="btn btn-success add-to-cart">Add to Cart</button>
+            <p class="card-text">$70</p>            
+            <div class="btn-container">              
+              <button class="btn btn-success shop-now">Shop Now</button>
+              <button class="btn btn-success add-to-cart">Add to Cart</button>            
+            </div>          
           </div>
         </div>
       </div>
       <div class="col-lg-3 col-md-4 col-sm-6 product-item" id="indoor">
         <div class="card product-card">
-          <img src="english-ivy.jpg" class="product-img" alt="">
+          <img src="img/english-ivy.jpg" class="product-img" alt="">
           <div class="card-body text-center">
             <h5 class="card-title name" >ENGLISH IVY CREEPER – CLIMBERS</h5>
-            <p class="card-text">$60</p>
-            <button class="btn btn-sucess shop-now">Shop Now</button>
-            <button class="btn btn-success add-to-cart">Add to Cart</button>
+            <p class="card-text">$60</p>            
+            <div class="btn-container">              
+              <button class="btn btn-success shop-now">Shop Now</button>
+              <button class="btn btn-success add-to-cart">Add to Cart</button>            
+            </div>          
           </div>
         </div>
       </div>
       <div class="col-lg-3 col-md-4 col-sm-6 product-item" id="indoor">
         <div class="card product-card">
-          <img src="chinese-evergreen.jpg" class="product-img" alt="">
+          <img src="img/chinese-evergreen.jpg" class="product-img" alt="">
           <div class="card-body text-center">
             <h5 class="card-title name" >Chinese Evergreen</h5>
-            <p class="card-text">$75</p>
-            <button class="btn btn-sucess shop-now">Shop Now</button>
-            <button class="btn btn-success add-to-cart">Add to Cart</button>
+            <p class="card-text">$75</p>            
+            <div class="btn-container">              
+              <button class="btn btn-success shop-now">Shop Now</button>
+              <button class="btn btn-success add-to-cart">Add to Cart</button>            
+            </div>          
           </div>
         </div>
       </div>
       <div class="col-lg-3 col-md-4 col-sm-6 product-item" id="outdoor">
         <div class="card product-card">
-          <img src="alexendra-palm.webp" class="product-img" alt="">
+          <img src="img/alexendra-palm.webp" class="product-img" alt="">
           <div class="card-body text-center">
             <h5 class="card-title name" >Alexendar Palm</h5>
-            <p class="card-text">$100</p>
-            <button class="btn btn-sucess shop-now">Shop Now</button>
-            <button class="btn btn-success add-to-cart">Add to Cart</button>
+            <p class="card-text">$100</p>            
+            <div class="btn-container">              
+              <button class="btn btn-success shop-now">Shop Now</button>
+              <button class="btn btn-success add-to-cart">Add to Cart</button>            
+            </div>          
           </div>
         </div>
       </div>
       <div class="col-lg-3 col-md-4 col-sm-6 product-item" id="outdoor">
         <div class="card product-card">
-          <img src="marry.webp" class="product-img" alt="">
+          <img src="img/marry.webp" class="product-img" alt="">
           <div class="card-body text-center">
             <h5 class="card-title name" >ASPARAGUS MARRY – FOXTAIL FERN</h5>
-            <p class="card-text">$30</p>
-            <button class="btn btn-sucess shop-now">Shop Now</button>
-            <button class="btn btn-success add-to-cart">Add to Cart</button>
+            <p class="card-text">$30</p>            
+            <div class="btn-container">              
+              <button class="btn btn-success shop-now">Shop Now</button>
+              <button class="btn btn-success add-to-cart">Add to Cart</button>            
+            </div>          
           </div>
         </div>
       </div>
       <div class="col-lg-3 col-md-4 col-sm-6 product-item" id="outdoor">
         <div class="card product-card">
-          <img src="royal-palm4.webp" class="product-img" alt="">
+          <img src="img/royal-palm4.webp" class="product-img" alt="">
           <div class="card-body text-center">
             <h5 class="card-title name" >Bottle / Royal Palm</h5>
-            <p class="card-text">$50</p>
-            <button class="btn btn-sucess shop-now">Shop Now</button>
-            <button class="btn btn-success add-to-cart">Add to Cart</button>
+            <p class="card-text">$50</p>            
+            <div class="btn-container">              
+              <button class="btn btn-success shop-now">Shop Now</button>
+              <button class="btn btn-success add-to-cart">Add to Cart</button>            
+            </div>          
           </div>
         </div>
       </div>
       <div class="col-lg-3 col-md-4 col-sm-6 product-item" id="tools">
         <div class="card product-card">
-          <img src="shears.avif" class="product-img" alt="">
+          <img src="img/shears.avif" class="product-img" alt="">
           <div class="card-body text-center">
             <h5 class="card-title name" >Shears</h5>
-            <p class="card-text">$19</p>
-            <button class="btn btn-sucess shop-now">Shop Now</button>
-            <button class="btn btn-success add-to-cart">Add to Cart</button>
+            <p class="card-text">$19</p>            
+            <div class="btn-container">              
+              <button class="btn btn-success shop-now">Shop Now</button>
+              <button class="btn btn-success add-to-cart">Add to Cart</button>            
+            </div>          
           </div>
         </div>
       </div>
       <div class="col-lg-3 col-md-4 col-sm-6 product-item" id="toos">
         <div class="card product-card">
-          <img src="lopers.avif" class="product-img" alt="">
+          <img src="img/lopers.avif" class="product-img" alt="">
           <div class="card-body text-center">
             <h5 class="card-title name" >Lopers</h5>
-            <p class="card-text">$16</p>
-            <button class="btn btn-sucess shop-now">Shop Now</button>
-            <button class="btn btn-success add-to-cart">Add to Cart</button>
+            <p class="card-text">$16</p>            <div class="btn-container">              
+              <button class="btn btn-success shop-now">Shop Now</button>
+              <button class="btn btn-success add-to-cart">Add to Cart</button>            
+            </div>          
           </div>
         </div>
       </div>
       <div class="col-lg-3 col-md-4 col-sm-6 product-item" id="tools">
         <div class="card product-card">
-          <img src="rake.jpeg" class="product-img" alt="rake">
+          <img src="img/rake.jpeg" class="product-img" alt="rake">
           <div class="card-body text-center">
             <h5 class="card-title name" >Rake</h5>
-            <p class="card-text">$15</p>
-            <button class="btn btn-sucess shop-now">Shop Now</button>
-            <button class="btn btn-success add-to-cart">Add to Cart</button>
+            <p class="card-text">$15</p>            
+            <div class="btn-container">              
+              <button class="btn btn-success shop-now">Shop Now</button>
+              <button class="btn btn-success add-to-cart">Add to Cart</button>            
+            </div>          
           </div>
         </div>
       </div>
       <div class="col-lg-3 col-md-4 col-sm-6 product-item" id="tools">
         <div class="card product-card">
-          <img src="gloves.webp" class="product-img" alt="gloves">
+          <img src="img/gloves.webp" class="product-img" alt="gloves">
           <div class="card-body text-center">
             <h5 class="card-title name" >Garden Gloves</h5>
-            <p class="card-text">$10</p>
-            <button class="btn btn-sucess shop-now">Shop Now</button>
-            <button class="btn btn-success add-to-cart">Add to Cart</button>
+            <p class="card-text">$10</p>            <div class="btn-container">              
+              <button class="btn btn-success shop-now">Shop Now</button>
+              <button class="btn btn-success add-to-cart">Add to Cart</button>            
+            </div>          
           </div>
         </div>
       </div>
       <div class="col-lg-3 col-md-4 col-sm-6 product-item" id="tools">
         <div class="card product-card">
-          <img src="water can.webp" class="product-img" alt="can">
+          <img src="img/water can.webp" class="product-img" alt="can">
           <div class="card-body text-center">
             <h5 class="card-title name" >Watering Can</h5>
-            <p class="card-text">$12</p>
-            <button class="btn btn-sucess shop-now">Shop Now</button>
-            <button class="btn btn-success add-to-cart">Add to Cart</button>
+            <p class="card-text">$12</p>            
+            <div class="btn-container">              
+              <button class="btn btn-success shop-now">Shop Now</button>
+              <button class="btn btn-success add-to-cart">Add to Cart</button>            
+            </div>          
           </div>
         </div>
       </div>
       <div class="col-lg-3 col-md-4 col-sm-6 product-item" id="indoor">
         <div class="card product-card">
-          <img src="paradise.webp" class="product-img" alt="">
+          <img src="img/paradise.webp" class="product-img" alt="">
           <div class="card-body text-center">
             <h5 class="card-title name" >BIRD OF PARADISE – OFFICE PLANTS</h5>
-            <p class="card-text">$100</p>
-            <button class="btn btn-sucess shop-now">Shop Now</button>
-            <button class="btn btn-success add-to-cart">Add to Cart</button>
+            <p class="card-text">$100</p>            
+            <div class="btn-container">              
+              <button class="btn btn-success shop-now">Shop Now</button>
+              <button class="btn btn-success add-to-cart">Add to Cart</button>            
+            </div>          
           </div>
         </div>
       </div>
       <div class="col-lg-3 col-md-4 col-sm-6 product-item" id="tree">
         <div class="card product-card">
-          <img src="Almond-tree1.webp" class="product-img" alt="">
+          <img src="img/Almond-tree1.webp" class="product-img" alt="">
           <div class="card-body text-center">
             <h5 class="card-title name" >ALMOND – FRUIT TREE</h5>
-            <p class="card-text">$70</p>
-            <button class="btn btn-sucess shop-now">Shop Now</button>
-            <button class="btn btn-success add-to-cart">Add to Cart</button>
+            <p class="card-text">$70</p>            
+            <div class="btn-container">              
+              <button class="btn btn-success shop-now">Shop Now</button>
+              <button class="btn btn-success add-to-cart">Add to Cart</button>            
+            </div>          
           </div>
         </div>
       </div>
       <div class="col-lg-3 col-md-4 col-sm-6 product-item" id="tree">
         <div class="card product-card">
-          <img src="walnut-black-Buy-Plants-Online.webp" class="product-img" alt="">
+          <img src="img/walnut-black-Buy-Plants-Online.webp" class="product-img" alt="">
           <div class="card-body text-center">
             <h5 class="card-title name" >WALNUT TREE(اخروٹ)-FRUIT TREE</h5>
-            <p class="card-text">$100</p>
-            <button class="btn btn-sucess shop-now">Shop Now</button>
-            <button class="btn btn-success add-to-cart">Add to Cart</button>
+            <p class="card-text">$100</p>            
+            <div class="btn-container">              
+              <button class="btn btn-success shop-now">Shop Now</button>
+              <button class="btn btn-success add-to-cart">Add to Cart</button>            
+            </div>          
           </div>
         </div>
       </div>
       <div class="col-lg-3 col-md-4 col-sm-6 product-item" id="tree">
         <div class="card product-card">
-          <img src="Anar-Buy-Plants-Online-Plant.Pk_.webp" class="product-img" alt="">
+          <img src="img/Anar-Buy-Plants-Online-Plant.Pk_.webp" class="product-img" alt="">
           <div class="card-body text-center">
             <h5 class="card-title name" >POMEGRANATE TREE(انار)-FRUIT TREE</h5>
-            <p class="card-text">$150</p>
-            <button class="btn btn-sucess shop-now">Shop Now</button>
-            <button class="btn btn-success add-to-cart">Add to Cart</button>
+            <p class="card-text">$150</p>            
+            <div class="btn-container">              
+              <button class="btn btn-success shop-now">Shop Now</button>
+              <button class="btn btn-success add-to-cart">Add to Cart</button>            
+            </div>          
           </div>
         </div>
       </div>
       <div class="col-lg-3 col-md-4 col-sm-6 product-item" id="outdoor">
         <div class="card product-card">
-          <img src="English-rose-white-buy-plants-online-plant.pk_.webp" class="product-img" alt="">
+          <img src="img/English-rose-white-buy-plants-online-plant.pk_.webp" class="product-img" alt="">
           <div class="card-body text-center">
             <h5 class="card-title name" >English Rose</h5>
-            <p class="card-text">$75</p>
-            <button class="btn btn-sucess shop-now">Shop Now</button>
-            <button class="btn btn-success add-to-cart">Add to Cart</button>
+            <p class="card-text">$75</p>            
+            <div class="btn-container">              
+              <button class="btn btn-success shop-now">Shop Now</button>
+              <button class="btn btn-success add-to-cart">Add to Cart</button>            
+            </div>          
           </div>
         </div>
       </div>
       <div class="col-lg-3 col-md-4 col-sm-6 product-item" id="seeds">
         <div class="card product-card">
-          <img src="celosia seed.webp" class="product-img" alt="">
+          <img src="img/celosia seed.webp" class="product-img" alt="">
           <div class="card-body text-center">
             <h5 class="card-title name" >CELOSIA-SUMMER SEEDS</h5>
-            <p class="card-text">$15</p>
-            <button class="btn btn-sucess shop-now">Shop Now</button>
-            <button class="btn btn-success add-to-cart">Add to Cart</button>
+            <p class="card-text">$15</p>            
+            <div class="btn-container">              
+              <button class="btn btn-success shop-now">Shop Now</button>
+              <button class="btn btn-success add-to-cart">Add to Cart</button>            
+            </div>          
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6 product-item" id="seeds">
+        <div class="card product-card">
+          <img src="img/tomato_seeds.jpeg" class="product-img" alt="">
+          <div class="card-body text-center">
+            <h5 class="card-title name" >TOMATO SEEDS</h5>
+            <p class="card-text">$15</p>            
+            <div class="btn-container">              
+              <button class="btn btn-success shop-now">Shop Now</button>
+              <button class="btn btn-success add-to-cart">Add to Cart</button>            
+            </div>          
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6 product-item" id="seeds">
+        <div class="card product-card">
+          <img src="img/coconut_bulb.jpeg" class="product-img" alt="">
+          <div class="card-body text-center">
+            <h5 class="card-title name" >COCONUT BULB</h5>
+            <p class="card-text">$25</p>            
+            <div class="btn-container">              
+              <button class="btn btn-success shop-now">Shop Now</button>
+              <button class="btn btn-success add-to-cart">Add to Cart</button>            
+            </div>          
           </div>
         </div>
       </div>
@@ -496,7 +578,7 @@
         <!-- Add your content here -->
          <div class="row">
           <div class="col-6">
-            <img id="image" src="rubber plant.jpeg" alt="">
+            <img id="image" src="img/rubber plant.jpeg" alt="">
           </div>
           <div class="col-6">
             <h5>Rubber Plant</h5>
@@ -523,7 +605,7 @@
         <!-- Add your content here -->
          <div class="row">
           <div class="col-6">
-            <img id="image" src="fiddle leaf.webp" alt="">
+            <img id="image" src="img/fiddle leaf.webp" alt="">
           </div>
           <div class="col-6">
             <h5>Fiddle-leaf fig</h5>
@@ -550,7 +632,7 @@
         <!-- Add your content here -->
          <div class="row">
           <div class="col-6">
-            <img id="image" src="aeonium.webp" alt="">
+            <img id="image" src="img/aeonium.webp" alt="">
           </div>
           <div class="col-6">
             <h5>Aeonium</h5>
@@ -577,7 +659,7 @@
         <!-- Add your content here -->
          <div class="row">
           <div class="col-6">
-            <img id="image" src="aleo.webp" alt="">
+            <img id="image" src="img/aleo.webp" alt="">
           </div>
           <div class="col-6">
             <h5>Aleo Vera</h5>
@@ -604,7 +686,7 @@
         <!-- Add your content here -->
          <div class="row">
           <div class="col-6">
-            <img id="image" src="cea" alt="">
+            <img id="image" src="img/cea" alt="">
           </div>
           <div class="col-6">
             <h5>crasulla</h5>
@@ -631,7 +713,7 @@
         <!-- Add your content here -->
          <div class="row">
           <div class="col-6">
-            <img id="image" src="goldenrod seeds.jpeg" alt="">
+            <img id="image" src="img/goldenrod seeds.jpeg" alt="">
           </div>
           <div class="col-6">
             <h5>Goldenrod Seeds</h5>
@@ -658,7 +740,7 @@
         <!-- Add your content here -->
          <div class="row">
           <div class="col-6">
-            <img id="image" src="showel.avif" alt="">
+            <img id="image" src="img/showel.avif" alt="">
           </div>
           <div class="col-6">
             <h5>Showel</h5>
@@ -685,7 +767,7 @@
         <!-- Add your content here -->
          <div class="row">
           <div class="col-6">
-            <img id="image" src="potting soil.jpeg" alt="">
+            <img id="image" src="img/potting soil.jpeg" alt="">
           </div>
           <div class="col-6">
             <h5>Potting Soil</h5>
@@ -712,7 +794,7 @@
         <!-- Add your content here -->
          <div class="row">
           <div class="col-6">
-            <img id="image" src="euphorbia.webp" alt="">
+            <img id="image" src="img/euphorbia.webp" alt="">
           </div>
           <div class="col-6">
             <h5>Euphorbia</h5>
@@ -739,7 +821,7 @@
         <!-- Add your content here -->
          <div class="row">
           <div class="col-6">
-            <img id="image" src="echevaria.webp" alt="">
+            <img id="image" src="img/echevaria.webp" alt="">
           </div>
           <div class="col-6">
             <h5>Echevaria</h5>
@@ -766,7 +848,7 @@
         <!-- Add your content here -->
          <div class="row">
           <div class="col-6">
-            <img id="image" src="rubber plant.jpeg" alt="">
+            <img id="image" src="img/rubber plant.jpeg" alt="">
           </div>
           <div class="col-6">
             <h5>Rubber Plant</h5>
@@ -793,7 +875,7 @@
         <!-- Add your content here -->
          <div class="row">
           <div class="col-6">
-            <img id="image" src="rubber plant.jpeg" alt="">
+            <img id="image" src="img/rubber plant.jpeg" alt="">
           </div>
           <div class="col-6">
             <h5>Rubber Plant</h5>
@@ -820,7 +902,7 @@
         <!-- Add your content here -->
          <div class="row">
           <div class="col-6">
-            <img id="image" src="rubber plant.jpeg" alt="">
+            <img id="image" src="img/rubber plant.jpeg" alt="">
           </div>
           <div class="col-6">
             <h5>Rubber Plant</h5>
@@ -847,7 +929,7 @@
         <!-- Add your content here -->
          <div class="row">
           <div class="col-6">
-            <img id="image" src="rubber plant.jpeg" alt="">
+            <img id="image" src="img/rubber plant.jpeg" alt="">
           </div>
           <div class="col-6">
             <h5>Rubber Plant</h5>
@@ -874,7 +956,7 @@
         <!-- Add your content here -->
          <div class="row">
           <div class="col-6">
-            <img id="image" src="rubber plant.jpeg" alt="">
+            <img id="image" src="img/rubber plant.jpeg" alt="">
           </div>
           <div class="col-6">
             <h5>Rubber Plant</h5>
@@ -901,7 +983,7 @@
         <!-- Add your content here -->
          <div class="row">
           <div class="col-6">
-            <img id="image" src="rubber plant.jpeg" alt="">
+            <img id="image" src="img/rubber plant.jpeg" alt="">
           </div>
           <div class="col-6">
             <h5>Rubber Plant</h5>
@@ -928,7 +1010,7 @@
         <!-- Add your content here -->
          <div class="row">
           <div class="col-6">
-            <img id="image" src="rubber plant.jpeg" alt="">
+            <img id="image" src="img/rubber plant.jpeg" alt="">
           </div>
           <div class="col-6">
             <h5>Rubber Plant</h5>
@@ -955,7 +1037,7 @@
         <!-- Add your content here -->
          <div class="row">
           <div class="col-6">
-            <img id="image" src="rubber plant.jpeg" alt="">
+            <img id="image" src="img/rubber plant.jpeg" alt="">
           </div>
           <div class="col-6">
             <h5>Rubber Plant</h5>
@@ -982,7 +1064,7 @@
         <!-- Add your content here -->
          <div class="row">
           <div class="col-6">
-            <img id="image" src="rubber plant.jpeg" alt="">
+            <img id="image" src="img/rubber plant.jpeg" alt="">
           </div>
           <div class="col-6">
             <h5>Rubber Plant</h5>
@@ -1009,7 +1091,7 @@
         <!-- Add your content here -->
          <div class="row">
           <div class="col-6">
-            <img id="image" src="rubber plant.jpeg" alt="">
+            <img id="image" src="img/rubber plant.jpeg" alt="">
           </div>
           <div class="col-6">
             <h5>Rubber Plant</h5>
@@ -1036,7 +1118,7 @@
         <!-- Add your content here -->
          <div class="row">
           <div class="col-6">
-            <img id="image" src="rubber plant.jpeg" alt="">
+            <img id="image" src="img/rubber plant.jpeg" alt="">
           </div>
           <div class="col-6">
             <h5>Rubber Plant</h5>
@@ -1063,7 +1145,7 @@
         <!-- Add your content here -->
          <div class="row">
           <div class="col-6">
-            <img id="image" src="rubber plant.jpeg" alt="">
+            <img id="image" src="img/rubber plant.jpeg" alt="">
           </div>
           <div class="col-6">
             <h5>Rubber Plant</h5>
@@ -1090,7 +1172,7 @@
         <!-- Add your content here -->
          <div class="row">
           <div class="col-6">
-            <img id="image" src="rubber plant.jpeg" alt="">
+            <img id="image" src="img/rubber plant.jpeg" alt="">
           </div>
           <div class="col-6">
             <h5>Rubber Plant</h5>
@@ -1117,7 +1199,7 @@
         <!-- Add your content here -->
          <div class="row">
           <div class="col-6">
-            <img id="image" src="rubber plant.jpeg" alt="">
+            <img id="image" src="img/rubber plant.jpeg" alt="">
           </div>
           <div class="col-6">
             <h5>Rubber Plant</h5>
@@ -1144,7 +1226,7 @@
         <!-- Add your content here -->
          <div class="row">
           <div class="col-6">
-            <img id="image" src="rubber plant.jpeg" alt="">
+            <img id="image" src="img/rubber plant.jpeg" alt="">
           </div>
           <div class="col-6">
             <h5>Rubber Plant</h5>
@@ -1171,7 +1253,7 @@
         <!-- Add your content here -->
          <div class="row">
           <div class="col-6">
-            <img id="image" src="rubber plant.jpeg" alt="">
+            <img id="image" src="img/rubber plant.jpeg" alt="">
           </div>
           <div class="col-6">
             <h5>Rubber Plant</h5>
@@ -1198,7 +1280,7 @@
         <!-- Add your content here -->
          <div class="row">
           <div class="col-6">
-            <img id="image" src="rubber plant.jpeg" alt="">
+            <img id="image" src="img/rubber plant.jpeg" alt="">
           </div>
           <div class="col-6">
             <h5>Rubber Plant</h5>
@@ -1225,7 +1307,7 @@
         <!-- Add your content here -->
          <div class="row">
           <div class="col-6">
-            <img id="image" src="rubber plant.jpeg" alt="">
+            <img id="image" src="img/rubber plant.jpeg" alt="">
           </div>
           <div class="col-6">
             <h5>Rubber Plant</h5>
@@ -1252,7 +1334,7 @@
         <!-- Add your content here -->
          <div class="row">
           <div class="col-6">
-            <img id="image" src="rubber plant.jpeg" alt="">
+            <img id="image" src="img/rubber plant.jpeg" alt="">
           </div>
           <div class="col-6">
             <h5>Rubber Plant</h5>
@@ -1279,7 +1361,7 @@
         <!-- Add your content here -->
          <div class="row">
           <div class="col-6">
-            <img id="image" src="rubber plant.jpeg" alt="">
+            <img id="image" src="img/rubber plant.jpeg" alt="">
           </div>
           <div class="col-6">
             <h5>Rubber Plant</h5>
@@ -1306,7 +1388,7 @@
         <!-- Add your content here -->
          <div class="row">
           <div class="col-6">
-            <img id="image" src="rubber plant.jpeg" alt="">
+            <img id="image" src="img/rubber plant.jpeg" alt="">
           </div>
           <div class="col-6">
             <h5>Rubber Plant</h5>
@@ -1333,7 +1415,7 @@
         <!-- Add your content here -->
          <div class="row">
           <div class="col-6">
-            <img id="image" src="rubber plant.jpeg" alt="">
+            <img id="image" src="img/rubber plant.jpeg" alt="">
           </div>
           <div class="col-6">
             <h5>Rubber Plant</h5>
@@ -1360,7 +1442,7 @@
         <!-- Add your content here -->
          <div class="row">
           <div class="col-6">
-            <img id="image" src="rubber plant.jpeg" alt="">
+            <img id="image" src="img/rubber plant.jpeg" alt="">
           </div>
           <div class="col-6">
             <h5>Rubber Plant</h5>
@@ -1408,8 +1490,9 @@
   </footer>
 
   <script>
-    document.getElementById("category").addEventListener("change", filterProducts);
+    // Replace the existing filterProducts() function in shop.html with this:
 
+document.getElementById("category").addEventListener("change", filterProducts);
 document.getElementById("search").addEventListener("input", filterProducts);
 
 function filterProducts() {
@@ -1417,22 +1500,48 @@ function filterProducts() {
   const categoryFilter = document.getElementById("category").value;
 
   const products = document.querySelectorAll(".product-item");
+  let visibleCount = 0;
 
   products.forEach(product => {
     const productName = product.querySelector(".card-title").textContent.toLowerCase();
-    const productCategory = product.getAttribute("id"); // Use getAttribute for accuracy
+    const productCategory = product.getAttribute("id");
 
     let categoryMatch = categoryFilter === "all" || productCategory === categoryFilter;
     let searchMatch = searchQuery === "" || productName.includes(searchQuery);
 
     if (categoryMatch && searchMatch) {
-      product.style.display = "block";
+      // Use Bootstrap classes instead of inline styles
+      product.classList.remove("d-none");
+      product.style.display = ""; // Clear any inline styles
+      visibleCount++;
     } else {
-      product.style.display = "none";
+      product.classList.add("d-none");
     }
   });
+
+  // Optional: Show "no results" message
+  const productsContainer = document.getElementById("products");
+  let noResultsMsg = document.getElementById("no-results-message");
+  
+  if (visibleCount === 0) {
+    if (!noResultsMsg) {
+      noResultsMsg = document.createElement("div");
+      noResultsMsg.id = "no-results-message";
+      noResultsMsg.className = "col-12 w-100 text-center py-5";
+      noResultsMsg.innerHTML = '<p class="text-muted">No products found matching your criteria.</p>';
+      productsContainer.appendChild(noResultsMsg);
+    }
+  } else {
+    if (noResultsMsg) {
+      noResultsMsg.remove();
+    }
+  }
 }
 </script>
-<script src="main.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
+
+
+
+
