@@ -7,15 +7,47 @@ body {
   }
   /* Style for search results container */
 #result {
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    background-color: transparent;
     width: 100%;
     height: auto;
-    max-height: 500px;
+    max-height: 60vh;
     overflow-y: auto;
+    overflow-x: hidden;
   }
+
+/* Offcanvas search results styling */
+.offcanvas #result {
+    padding: 15px 20px;
+    margin: 0;
+    max-height: calc(100vh - 200px);
+    transition: max-height 0.3s ease-in-out;
+}
+
+/* Expanded search results when active */
+.offcanvas.search-active {
+    height: 80vh !important;
+    max-height: 80vh !important;
+}
+
+.offcanvas.search-active #result {
+    max-height: calc(80vh - 150px);
+    padding: 20px;
+}
+
+/* Search results loading state */
+#result.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100px;
+}
+
+#result.loading::after {
+    content: "Searching...";
+    color: #6c757d;
+    font-style: italic;
+}
 
 
 /* Navbar styling */
@@ -327,45 +359,519 @@ a img{
         font-size: 16px; /* Adjust font size for smaller screens */
     }
 }
-/* Responsive Design for Search Results List */
+/* Enhanced Responsive Design for Search Results */
 @media (max-width: 768px) {
-    #result {
-        width: 100%; /* Make list responsive */
-        padding: 10px; /* Add some padding */
-        font-size: 16px; /* Adjust font size for smaller screens */
+    .offcanvas #result {
+        padding: 10px 15px;
+        max-height: calc(100vh - 180px);
     }
-}
-/* Responsive Design for Search Results Item */
-@media (max-width: 768px) {
-    #result {
-        width: 100%; /* Make item responsive */
-        padding: 10px; /* Add some padding */
-        font-size: 16px; /* Adjust font size for smaller screens */
+    
+    .offcanvas.search-active {
+        height: 85vh !important;
+        max-height: 85vh !important;
     }
-}
-/* Responsive Design for Search Results Item Image */
-@media (max-width: 768px) {
+    
+    .offcanvas.search-active #result {
+        max-height: calc(85vh - 140px);
+    }
+    
+    #result .card-title {
+        font-size: 14px;
+    }
+    
+    #result .card-text {
+        font-size: 16px;
+    }
+    
+    #result .btn {
+        font-size: 11px;
+        padding: 5px 10px;
+    }
+    
     #result img {
-        width: 100%; /* Make image responsive */
-        height: auto; /* Maintain aspect ratio */
+        max-height: 150px;
     }
 }
 
-/* for search result */
+@media (max-width: 576px) {
+    .offcanvas #result {
+        padding: 8px 12px;
+        max-height: calc(100vh - 160px);
+    }
+    
+    .offcanvas.search-active {
+        height: 90vh !important;
+        max-height: 90vh !important;
+    }
+    
+    .offcanvas.search-active #result {
+        max-height: calc(90vh - 120px);
+    }
+    
+    #result .card-title {
+        font-size: 13px;
+        margin-bottom: 6px;
+    }
+    
+    #result .card-text {
+        font-size: 15px;
+        margin-bottom: 10px;
+    }
+    
+    #result .btn-container {
+        flex-direction: column;
+        gap: 6px;
+    }
+    
+    #result .btn {
+        width: 100%;
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+    
+    #result img {
+        max-height: 120px;
+    }
+    
+    #result .no-results {
+        padding: 30px 15px;
+    }
+    
+    #result .no-results i {
+        font-size: 36px;
+        margin-bottom: 12px;
+    }
+}
+
+/* Enhanced search result card styling */
 #result .card {
   height: 100%;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  transition: transform 0.2s ease-in-out;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  transition: all 0.3s ease-in-out;
+  border: 1px solid rgba(0,0,0,0.05);
+  background: #fff;
+  overflow: hidden;
 }
 
 #result .card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  border-color: rgba(40, 167, 69, 0.2);
 }
 
 #result img {
-  max-height: 200px;
+  max-height: 180px;
+  width: 100%;
   object-fit: cover;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+#result .card:hover img {
+  transform: scale(1.05);
+}
+
+/* Search result card body */
+#result .card-body {
+  padding: 15px;
+}
+
+#result .card-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+#result .card-text {
+  font-size: 18px;
+  font-weight: 700;
+  color: #28a745;
+  margin-bottom: 12px;
+}
+
+/* Search result buttons */
+#result .btn-container {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+#result .btn {
+  font-size: 12px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+#result .btn:hover {
+  transform: translateY(-1px);
+}
+
+/* No results styling */
+#result .no-results {
+  text-align: center;
+  padding: 40px 20px;
+  color: #6c757d;
+}
+
+#result .no-results i {
+  font-size: 48px;
+  margin-bottom: 15px;
+  color: #dee2e6;
+}
+
+#result .no-results h5 {
+  margin-bottom: 10px;
+  color: #495057;
+}
+
+#result .no-results p {
+  margin: 0;
+  font-size: 14px;
+}
+
+/* Enhanced search input styling */
+.offcanvas #search-input {
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  padding: 12px 15px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  background-color: #fff;
+}
+
+.offcanvas #search-input:focus {
+  border-color: #28a745;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+  outline: none;
+}
+
+.offcanvas .btn-gradient {
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.offcanvas .btn-gradient:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Search form improvements */
+.offcanvas .d-flex {
+  gap: 10px;
+  align-items: stretch;
+}
+
+/* Loading animation for search */
+@keyframes searchPulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+#result.loading::after {
+  animation: searchPulse 1.5s infinite;
+}
+
+/* Homepage search results now use the same styling as shop search results */
+/* The #result .card styling above already handles homepage product display */
+
+/* Enhanced Footer Styling */
+.footer {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%) !important;
+  margin-top: 50px;
+}
+
+.footer-logo {
+  max-width: 120px;
+  height: auto;
+  filter: brightness(1.1);
+}
+
+.footer-brand h5 {
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+}
+
+.footer-features .feature-item {
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.footer-features .feature-item:hover {
+  transform: translateX(5px);
+}
+
+.footer-links li {
+  margin-bottom: 8px;
+  transition: all 0.3s ease;
+}
+
+.footer-links li a {
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.footer-links li a:hover {
+  color: #28a745 !important;
+  transform: translateX(5px);
+}
+
+.footer-links li a::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: #28a745;
+  transition: width 0.3s ease;
+}
+
+.footer-links li a:hover::before {
+  width: 100%;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.contact-icon {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.contact-details {
+  flex: 1;
+}
+
+.social-links {
+  display: flex;
+  gap: 15px;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(40, 167, 69, 0.1);
+  border: 1px solid rgba(40, 167, 69, 0.3);
+  border-radius: 50%;
+  color: #28a745;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 16px;
+}
+
+.social-link:hover {
+  background: #28a745;
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+}
+
+.newsletter-form .input-group {
+  max-width: 300px;
+}
+
+.newsletter-form .form-control {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.newsletter-form .form-control:focus {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #28a745;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+  color: white;
+}
+
+.newsletter-form .form-control::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.newsletter-form .btn {
+  border: none;
+  background: linear-gradient(45deg, #28a745, #20c997);
+  transition: all 0.3s ease;
+}
+
+.newsletter-form .btn:hover {
+  background: linear-gradient(45deg, #218838, #1abc9c);
+  transform: translateY(-1px);
+}
+
+/* Footer Responsive Design */
+@media (max-width: 768px) {
+  .footer {
+    padding: 30px 0 !important;
+  }
+  
+  .footer-logo {
+    max-width: 100px;
+  }
+  
+  .contact-item {
+    flex-direction: column;
+    gap: 5px;
+    text-align: center;
+  }
+  
+  .contact-icon {
+    align-self: center;
+  }
+  
+  .social-links {
+    justify-content: center;
+    margin-top: 15px;
+  }
+  
+  .newsletter-form .input-group {
+    max-width: 100%;
+  }
+  
+  .newsletter-form {
+    text-align: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .footer-brand h5 {
+    font-size: 1.25rem;
+  }
+  
+  .social-link {
+    width: 35px;
+    height: 35px;
+    font-size: 14px;
+  }
+  
+  .footer-links {
+    text-align: center;
+  }
+  
+  .footer-features {
+    text-align: center;
+  }
+}
+
+/* Shop Page Filter Enhancements */
+.product-item {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.product-item.d-none {
+  display: none !important;
+}
+
+/* Force proper card display for all visible products */
+.product-item:not(.d-none) .product-card {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 350px;
+  background: #fff !important;
+  border: 1px solid #e0e0e0 !important;
+  border-radius: 15px !important;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08) !important;
+  overflow: hidden !important;
+}
+
+/* Ensure card body is properly styled for all products */
+.product-item:not(.d-none) .card-body {
+  padding: 20px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  min-height: 150px !important;
+}
+
+/* Ensure product image is properly styled for all products */
+.product-item:not(.d-none) .product-img {
+  width: 100% !important;
+  height: 200px !important;
+  object-fit: cover !important;
+  display: block !important;
+}
+
+/* Ensure product title and text are properly styled for all products */
+.product-item:not(.d-none) .card-title {
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  color: #2c3e50 !important;
+  margin-bottom: 12px !important;
+  line-height: 1.4 !important;
+  display: block !important;
+}
+
+.product-item:not(.d-none) .card-text {
+  font-size: 20px !important;
+  color: #28a745 !important;
+  font-weight: 700 !important;
+  margin-bottom: 15px !important;
+  display: block !important;
+}
+
+/* Ensure button container is properly styled for all products */
+.product-item:not(.d-none) .btn-container {
+  display: flex !important;
+  gap: 8px !important;
+  flex-wrap: wrap !important;
+  justify-content: space-between !important;
+  margin-top: 10px !important;
+}
+
+/* Smooth transitions for filtering */
+.product-item:not(.d-none) {
+  animation: slideIn 0.5s ease forwards;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Enhanced filter bar styling */
+.filter-bar {
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.filter-bar .form-control::placeholder {
+  color: #6c757d;
+  font-style: italic;
+}
+
+/* Better focus states */
+.filter-bar .form-control:focus,
+.filter-bar .form-select:focus {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
 }

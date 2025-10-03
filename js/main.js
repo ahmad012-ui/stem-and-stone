@@ -38,47 +38,9 @@ function storeData() {
 // 
 
 
-function searchData() {
-    const searchTerm = document.getElementById("search-input").value.toLowerCase().trim();
-    const resultsContainer = document.getElementById("result"); // Get the results div
-    let searchElements;
-
-    // Clear previous results
-    if (resultsContainer) resultsContainer.innerHTML = "";
-
-    // Check page context
-    if (document.querySelector(".product-item")) {
-        searchElements = document.querySelectorAll(".product-item");
-    } else if (document.querySelector("#shop .nav-item")) {
-        searchElements = document.querySelectorAll("#shop .nav-item");
-    }
-
-    let foundResults = false;
-
-    if (searchElements) {
-        searchElements.forEach(element => {
-            const cardTitle = element.querySelector(".card-title").textContent.toLowerCase();
-            const isVisible = cardTitle.includes(searchTerm);
-
-            if (isVisible) {
-                foundResults = true;
-                // Clone the element and append to results container
-                const clone = element.cloneNode(true);
-                clone.classList.remove("d-none"); // Ensure visibility
-                // Adjust for offcanvas display
-                clone.className = clone.className.replace('col-lg-3', 'col-lg-4').replace('col-md-4', 'col-md-6').replace('col-sm-6', 'col-sm-12');
-                const img = clone.querySelector('.product-img');
-                if (img) img.style.height = '150px';
-                if (resultsContainer) resultsContainer.appendChild(clone);
-            }
-        });
-    }
-
-    // Display "no results" message
-    if (resultsContainer && !foundResults) {
-        resultsContainer.innerHTML = `<p class="text-muted">No results found for: ${searchTerm}</p>`;
-    }
-}
+// This function is now handled by search.js
+// Removed duplicate searchData function to avoid conflicts
+// The main search functionality is now centralized in js/search.js
 
 
 // function searchData() {

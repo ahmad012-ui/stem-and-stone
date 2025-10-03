@@ -59,13 +59,14 @@
     </div>
     <div class="offcanvas-body">
       <form class="d-flex" onsubmit="event.preventDefault()">
-        <input class="form-control me-2" id="search-input" type="search" placeholder="Search...">
-        <button class="btn btn-dark btn-gradient" onclick="searchData()" type="button">Search</button>
-        <div id="search-results" class="mt-2 text-muted small"></div>
+        <input class="form-control me-2" id="search-input" type="search" placeholder="Search plants, categories..." aria-label="Search products">
+        <button class="btn btn-dark btn-gradient" onclick="searchData()" type="button">
+          <i class="fas fa-search me-1"></i>Search
+        </button>
       </form>
+      <!-- Search results container -->
+      <div id="result" class="row g-4 mt-3"></div>
     </div>
-    <!-- for showing results -->
-   <div id="result" class="row g-4 mt-3"></div>
 </div>
 <script src="js/search.js"></script>
 
@@ -218,36 +219,136 @@
 
   </section>
 
- <!-- footer -->
-
-<footer class="text-center p-4 bg-dark text-white">
+<!-- Enhanced Footer -->
+<footer class="footer bg-dark text-white py-5">
   <div class="container">
     <div class="row">
-      <div class="col-6">
-        <h5>STEM & STONE</h5>
-        <p>At Stem & Stone, we ensure that every plant is nurtured with care and delivered to your doorstep...</p>
+      <!-- Company Info -->
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="footer-brand mb-3">
+          <!-- <img src="img/logo-removebg-preview.png" alt="STEM & STONE" class="footer-logo mb-4"> -->
+          <h5 class="text-success fw-bold">STEM & STONE</h5>
+        </div>
+        <p class="text-light mb-3">🌿 Your Personal Jungle Awaits! We bring nature's beauty to your doorstep with carefully nurtured plants and expert gardening services.</p>
+        <div class="footer-features">
+          <div class="feature-item mb-2">
+            <i class="fas fa-seedling text-success me-2"></i>
+            <small class="text-light">Premium Quality Plants</small>
+          </div>
+          <div class="feature-item mb-2">
+            <i class="fas fa-truck text-success me-2"></i>
+            <small class="text-light">Fast & Safe Delivery</small>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-leaf text-success me-2"></i>
+            <small class="text-light">Expert Plant Care</small>
+          </div>
+        </div>
       </div>
-      <div id="contacts" class="col-6">
-        <h5 class="text-uppercase mb-0">CONTACT</h5>
-         <ul id="cont-list" class="list-unstyled ">
-           <li class="nav-item ">
-             <span class="fa fa-phone">  +1 (123) 456-7890</span>
-           </li>
-           <li class="nav-item">
-             <i class="fa fa-home">   123 Main St, City, State, ZIP </i>
-           </li>
-           <li class="nav-item">
-              <a href="mailto:your-email@example.com" class="nav-link" ><i class="fa-regular fa-envelope">    your-email@example.com  </i></a>
-            </li>
-          </ul>
+
+      <!-- Quick Links -->
+      <div class="col-lg-2 col-md-6 mb-4">
+        <h6 class="text-success fw-bold mb-3">Quick Links</h6>
+        <ul class="list-unstyled footer-links">
+          <li><a href="index.html" class="text-light text-decoration-none">Home</a></li>
+          <li><a href="shop.html" class="text-light text-decoration-none">Shop</a></li>
+          <li><a href="#about" class="text-light text-decoration-none">About Us</a></li>
+          <li><a href="#services" class="text-light text-decoration-none">Services</a></li>
+          <li><a href="#contacts" class="text-light text-decoration-none">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Categories -->
+      <div class="col-lg-2 col-md-6 mb-4">
+        <h6 class="text-success fw-bold mb-3">Categories</h6>
+        <ul class="list-unstyled footer-links">
+          <li><a href="shop.html#indoor" class="text-light text-decoration-none">Indoor Plants</a></li>
+          <li><a href="shop.html#outdoor" class="text-light text-decoration-none">Outdoor Plants</a></li>
+          <li><a href="shop.html#succulents" class="text-light text-decoration-none">Succulents</a></li>
+          <li><a href="shop.html#herbs" class="text-light text-decoration-none">Herbs</a></li>
+          <li><a href="shop.html#seeds" class="text-light text-decoration-none">Seeds</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="col-lg-4 col-md-6 mb-4">
+        <h6 class="text-success fw-bold mb-3">Get in Touch</h6>
+        <div class="contact-info">
+          <div class="contact-item mb-3">
+            <div class="contact-icon">
+              <i class="fas fa-phone text-success"></i>
+            </div>
+            <div class="contact-details">
+              <small class="text-light d-block">Phone</small>
+              <span class="text-white">+1 (123) 456-7890</span>
+            </div>
+          </div>
+          <div class="contact-item mb-3">
+            <div class="contact-icon">
+              <i class="fas fa-envelope text-success"></i>
+            </div>
+            <div class="contact-details">
+              <small class="text-light d-block">Email</small>
+              <a href="mailto:info@stemandstone.com" class="text-white text-decoration-none">info@stemandstone.com</a>
+            </div>
+          </div>
+          <div class="contact-item mb-3">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt text-success"></i>
+            </div>
+            <div class="contact-details">
+              <small class="text-light d-block">Address</small>
+              <span class="text-white">123 Garden Street, Plant City, PC 12345</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div id="social" class="d-flex justify-content-center gap-3" style="font-size: 30px;">
-      <a href="https://www.twitter.com" class="text-white"><i class="fab fa-twitter"></i></a>
-      <a href="https://www.facebook.com" class="text-white"><i class="fab fa-facebook"></i></a>
-      <a href="https://www.instagram.com" class="text-white"><i class="fab fa-instagram"></i></a>
+
+    <!-- Social Media & Newsletter -->
+    <div class="row pt-4">
+      <div class="col-lg-6 mb-3">
+        <h6 class="text-success fw-bold mb-3">Follow Us</h6>
+        <div class="social-links">
+          <a href="https://www.facebook.com" class="social-link me-3" target="_blank" rel="noopener">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://www.instagram.com" class="social-link me-3" target="_blank" rel="noopener">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.twitter.com" class="social-link me-3" target="_blank" rel="noopener">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://www.pinterest.com" class="social-link" target="_blank" rel="noopener">
+            <i class="fab fa-pinterest"></i>
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-6 mb-3">
+        <h6 class="text-success fw-bold mb-3">Plant Care Tips</h6>
+        <div class="newsletter-form">
+          <div class="input-group">
+            <input type="email" class="form-control" placeholder="Get weekly plant tips..." aria-label="Email for plant tips" required>
+            <button class="btn btn-success" type="button">
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </div>
+          <small class="text-light">Weekly plant care tips delivered to your inbox!</small>
+        </div>
+      </div>
     </div>
-    <p class="mt-3">&copy; 2025 STEM & STONE. All Rights Reserved.</p>
+
+    <!-- Copyright -->
+    <div class="row border-top border-secondary pt-3 mt-4">
+      <div class="col-12 text-center">
+        <p class="mb-0 text-light">
+          <i class="fas fa-leaf text-success me-1"></i>
+          &copy; 2025 STEM & STONE. All Rights Reserved. | 
+          <a href="#" class="text-success text-decoration-none">Privacy Policy</a> | 
+          <a href="#" class="text-success text-decoration-none">Terms of Service</a>
+        </p>
+      </div>
+    </div>
   </div>
 </footer>
 
